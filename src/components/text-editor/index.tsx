@@ -9,8 +9,7 @@ import Link from "@tiptap/extension-link";
 import FontSize from "@tiptap/extension-font-size";
 import { Toolbar } from "./toolbar/Toolbar";
 
-type Props = {};
-export default function TextEditor({}: Props) {
+export default function TextEditor() {
   const editor = useEditor({
     extensions: [
       StarterKit,

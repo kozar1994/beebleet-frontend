@@ -17,8 +17,9 @@ function ImageUploadConteiner() {
       {images.length === 0 && (
         <div className="w-full">
           <div className="rounded text-center text-gray-500">
-            Немає карток. Натисніть кнопку "Додати картку" щоб створити порожню
-            картку.
+            Немає карток. Натисніть кнопку{" "}
+            <span className="font-bold">Додати картку</span> щоб створити
+            порожню картку.
           </div>
         </div>
       )}
@@ -31,7 +32,8 @@ function ImageUploadConteiner() {
       <div>
         <Separator className="my-4  border-dashed" />
         <Button variant="outline" onClick={addEmptyCard}>
-          <ImagePlus className="mr-2 w-6 h-6" /> Додати картку
+          <ImagePlus className="mr-2 w-6 h-6" />
+          Додати картку
         </Button>
       </div>
 

@@ -6,12 +6,11 @@ import {
 } from "@/components/ui/popover";
 import { useCurrentEditor } from "@tiptap/react";
 import { Link } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-type Props = {};
-export default function LinkButton({}: Props) {
+export default function LinkButton() {
   const { editor } = useCurrentEditor();
   const [url, setUrl] = useState("");
   const [open, setOpen] = useState(false);

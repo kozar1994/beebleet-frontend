@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useCurrentEditor } from "@tiptap/react";
 import { Bold, Italic, Underline } from "lucide-react";
 
-type Props = {};
-export default function FormatButtons({}: Props) {
+export default function FormatButtons() {
   const { editor } = useCurrentEditor();
 
   if (!editor) {

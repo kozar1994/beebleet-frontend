@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import UndoRedoBottons from "./UndoRedoBottons";
 import FormatButtons from "./FormatButtons";
@@ -12,7 +11,7 @@ import LinkButton from "./LinkButton";
 import { useCurrentEditor } from "@tiptap/react";
 
 export const Toolbar: React.FC = () => {
-  const [_, forceUpdate] = useState({});
+  const [, forceUpdate] = useState({});
 
   const { editor } = useCurrentEditor();
 

@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useCurrentEditor } from "@tiptap/react";
 import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 
-type Props = {};
-export default function AlignmentButtons({}: Props) {
+export default function AlignmentButtons() {
   const { editor } = useCurrentEditor();
 
   if (!editor) {

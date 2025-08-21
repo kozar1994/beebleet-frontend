@@ -6,12 +6,11 @@ import {
 } from "@/components/ui/popover";
 import { useCurrentEditor } from "@tiptap/react";
 import { Palette } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //TODO: react-colorful давно не обнолвлялась треба ошукати заміну
 import { HexColorPicker } from "react-colorful";
 
-type Props = {};
-export default function TextColorButton({}: Props) {
+export default function TextColorButton() {
   const { editor } = useCurrentEditor();
   const [color, setColor] = useState("#000000");
   const [open, setOpen] = useState(false);

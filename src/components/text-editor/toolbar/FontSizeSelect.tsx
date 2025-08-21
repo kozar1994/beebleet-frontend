@@ -19,8 +19,7 @@ const FONT_SIZES = [
 
 const DEFAULT_SIZE = "16px";
 
-type Props = {};
-export default function FontSizeSelect({}: Props) {
+export default function FontSizeSelect() {
   const { editor } = useCurrentEditor();
   const [currentSize, setCurrentSize] = useState(DEFAULT_SIZE);
   const [open, setOpen] = useState(false);

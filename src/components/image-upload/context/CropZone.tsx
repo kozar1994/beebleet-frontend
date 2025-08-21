@@ -8,9 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
 import { Save, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
-  const { setCroppedImage, removeCard } = useImageUpload();
+  const { removeCard } = useImageUpload();
   const [zoom, setZoom] = useState(1);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
@@ -22,13 +23,13 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
   const onSave = useCallback(async () => {
     if (!croppedAreaPixels || !item.imageOrigine) return;
     // TODO: треба придумати якись статус коли зберігаю, щоб показувати що картинка обрізалась, і збереглась нормально
-  }, [croppedAreaPixels, item, setCroppedImage]);
+  }, [croppedAreaPixels, item]);
 
   return (
     <Card className="w-full h-72 relative overflow-hidden bg-muted/90 rounded-2xl">
       {item.imageCrop ? (
         <div className="h-full w-full flex items-center justify-center p-2">
-          <img
+          <Image
             src={item.imageCrop}
             alt="cropped"
             className="max-h-full max-w-full rounded-md shadow"
@@ -55,7 +56,7 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
                 min={1}
                 max={3}
                 step={0.01}
-                onValueChange={(val: any) => setZoom(val[0])}
+                onValueChange={(val: number[]) => setZoom(val[0])}
               />
             </div>
 

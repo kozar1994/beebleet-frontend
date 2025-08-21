@@ -18,7 +18,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-type OnDragEndCallback = (newItems: { id: string; type?: any }[]) => void;
+type OnDragEndCallback = (newItems: { id: string; type?: string }[]) => void;
 
 type Props = {
   items: string[]; // Для DND передай завжди id(простий маси). Не працює коли обєкти з ID передаю
@@ -49,8 +49,7 @@ export default function DndProvider({
   );
 
   // реф для droppable-контейнера
-  const { setNodeRef: setContainerNodeRef, isOver: isContainerOver } =
-    useDroppable({ id: containerId });
+  const { setNodeRef: setContainerNodeRef } = useDroppable({ id: containerId });
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;

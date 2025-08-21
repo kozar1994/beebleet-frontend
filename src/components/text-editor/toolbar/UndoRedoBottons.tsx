@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useCurrentEditor } from "@tiptap/react";
 import { Redo, Undo } from "lucide-react";
-import { useState, useEffect } from "react";
 
-type Props = {};
-export default function UndoRedoBottons({}: Props) {
+export default function UndoRedoBottons() {
   const { editor } = useCurrentEditor();
 
   if (!editor) {
