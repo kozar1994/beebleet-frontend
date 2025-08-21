@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { GripVertical, Images, Notebook, Trash } from "lucide-react";
 import { Separator } from "../ui/separator";
 import ImageUploadWrapper from "../image-upload/ImageUploadWrapper";
+import TextEditor from "../text-editor";
 
 export type ElementType = "image" | "text";
 export type BlockType = {
@@ -89,7 +90,30 @@ export default function RootPage() {
                     </CardContent>
                   </Card>
                 )}
-                {it.type === "text" && <div>Текст</div>}
+                {it.type === "text" && (
+                  <Card className="bg-gray-100/50">
+                    <CardHeader className="flex justify-between items-center">
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        className="size-8"
+                      >
+                        <GripVertical />
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="icon"
+                        className="size-8"
+                        onClick={() => delteBlokHendler(it.id)}
+                      >
+                        <Trash />
+                      </Button>
+                    </CardHeader>
+                    <CardContent>
+                      <TextEditor />
+                    </CardContent>
+                  </Card>
+                )}
               </div>
             ))}
           </CardContent>
