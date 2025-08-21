@@ -15,6 +15,7 @@ import ImageUploadWrapper from "../image-upload/ImageUploadWrapper";
 import TextEditor from "../text-editor";
 import DndProvider from "../dnd/dnd-provider";
 import DndCard from "../dnd/dnd-card";
+import { Badge } from "../ui/badge";
 
 export type ElementType = "image" | "text";
 export type BlockType = {
@@ -22,10 +23,17 @@ export type BlockType = {
   type: ElementType;
 };
 
+const LIMIT_BLOCK = {
+  IMAGE: 3,
+  TEXT: 4,
+};
+
 export default function RootPage() {
   const [bloks, setBlocks] = useState<BlockType[]>([]);
 
   const bloksIds = bloks.map((it) => it.id);
+  const countImageBlock = bloks.filter((it) => it.type === "image").length;
+  const countTextBlock = bloks.filter((it) => it.type === "text").length;
 
   const addNewBlokHendler = (type: ElementType) => {
     setBlocks((oldBlocks) => [...oldBlocks, { id: crypto.randomUUID(), type }]);
@@ -38,12 +46,26 @@ export default function RootPage() {
 
   const sectionWithButton = (
     <>
-      <Button variant="outline" onClick={() => addNewBlokHendler("image")}>
+      <Button
+        disabled={countImageBlock >= LIMIT_BLOCK.IMAGE}
+        variant="outline"
+        onClick={() => addNewBlokHendler("image")}
+      >
         <Images className="mr-2 w-6 h-6" /> Картинки
+        <Badge variant="secondary">
+          limit: {countImageBlock}/{LIMIT_BLOCK.IMAGE}
+        </Badge>
       </Button>
-      <Button variant="outline" onClick={() => addNewBlokHendler("text")}>
+      <Button
+        disabled={countTextBlock >= LIMIT_BLOCK.TEXT}
+        variant="outline"
+        onClick={() => addNewBlokHendler("text")}
+      >
         <Notebook className="mr-2 w-6 h-6" />
         Текст
+        <Badge variant="secondary">
+          limit: {countTextBlock}/{LIMIT_BLOCK.TEXT}
+        </Badge>
       </Button>
     </>
   );
