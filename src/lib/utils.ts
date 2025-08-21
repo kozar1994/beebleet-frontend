@@ -12,3 +12,34 @@ export const readFileAsDataUrl = (file: File) =>
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
+
+export const createCroppedImage = async (
+  imageSrc: string,
+  cropArea: { width: number; height: number; x: number; y: number }
+): Promise<string> => {
+  return new Promise<string>((resolve) => {
+    const image = document.createElement("img");
+    image.src = imageSrc;
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d")!;
+
+      canvas.width = cropArea.width;
+      canvas.height = cropArea.height;
+
+      ctx.drawImage(
+        image,
+        cropArea.x,
+        cropArea.y,
+        cropArea.width,
+        cropArea.height,
+        0,
+        0,
+        cropArea.width,
+        cropArea.height
+      );
+
+      resolve(canvas.toDataURL("image/jpeg"));
+    };
+  });
+};

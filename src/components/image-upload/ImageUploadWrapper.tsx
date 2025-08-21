@@ -2,12 +2,13 @@
 
 import { ImagePlus } from "lucide-react";
 import { Button } from "../ui/button";
-import { ImageCard } from "./context/ImageCard";
+import { ImageCard } from "./ImageCard";
+
+import { Separator } from "../ui/separator";
 import {
   ImageUploadProvider,
   useImageUpload,
 } from "./context/ImageUploadContext";
-import { Separator } from "../ui/separator";
 
 function ImageUploadConteiner() {
   const { images, addEmptyCard } = useImageUpload();

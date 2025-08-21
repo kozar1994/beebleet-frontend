@@ -49,7 +49,7 @@ export default function RootPage() {
   );
 
   return (
-    <div className="w-full h-screen bg-gray-100">
+    <div className="w-full h-screen p-2">
       <div className="container mx-auto py-4">
         <Card>
           <CardHeader>

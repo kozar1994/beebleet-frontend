@@ -26,7 +26,12 @@ export default function DndCard({ item, delteBlokHendler, children }: Props) {
   } = useSortable({ id: item.id });
 
   const style: React.CSSProperties = {
-    transform: CSS.Transform.toString(transform),
+    transform: CSS.Transform.toString({
+      x: transform?.x ?? 0,
+      y: transform?.y ?? 0,
+      scaleX: transform?.scaleX ?? 1,
+      scaleY: 1,
+    }),
     transition,
     opacity: isDragging ? 0.6 : 1,
     zIndex: isDragging ? 999 : undefined,

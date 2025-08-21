@@ -1,13 +1,17 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { ImageItem } from "../types";
+import { CroppedAreaPixels, ImageItem } from "../types";
 
 type Context = {
   images: ImageItem[];
   addEmptyCard: () => void;
   addImageToCard: (id: string, dataUrl: string) => void;
-  setCroppedImage: (id: string, dataUrl: string) => void;
+  setCroppedImage: (
+    id: string,
+    dataUrl: string,
+    croppedAreaPixels: CroppedAreaPixels
+  ) => void;
   removeCard: (id: string) => void;
 };
 
@@ -20,6 +24,7 @@ export const ImageUploadProvider: React.FC<{ children: React.ReactNode }> = ({
     id: crypto.randomUUID(),
     imageOrigine: null,
     imageCrop: null,
+    croppedAreaPixels: null,
   };
   const [images, setImages] = useState<ImageItem[]>([defaultImage]);
 
@@ -33,9 +38,15 @@ export const ImageUploadProvider: React.FC<{ children: React.ReactNode }> = ({
     );
   };
 
-  const setCroppedImage = (id: string, dataUrl: string) => {
+  const setCroppedImage = (
+    id: string,
+    dataUrl: string,
+    croppedAreaPixels: CroppedAreaPixels
+  ) => {
     setImages((s) =>
-      s.map((it) => (it.id === id ? { ...it, imageCrop: dataUrl } : it))
+      s.map((it) =>
+        it.id === id ? { ...it, imageCrop: dataUrl, croppedAreaPixels } : it
+      )
     );
   };
 

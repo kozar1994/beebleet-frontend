@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useCallback } from "react";
-import { ImageItem } from "../types";
-import { useImageUpload } from "./ImageUploadContext";
 import { readFileAsDataUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ImageItem } from "./types";
+import { useImageUpload } from "./context/ImageUploadContext";
 
 export const UploadZone: React.FC<{ item: ImageItem }> = ({ item }) => {
   const { addImageToCard } = useImageUpload();

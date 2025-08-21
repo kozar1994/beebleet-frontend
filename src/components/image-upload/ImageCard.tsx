@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageItem } from "../types";
+import { ImageItem } from "./types";
 import { UploadZone } from "./UploadZone";
 import { CropZone } from "./CropZone";
 
