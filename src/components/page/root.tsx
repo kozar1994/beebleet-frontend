@@ -9,8 +9,9 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Button } from "../ui/button";
-import { Images, Notebook } from "lucide-react";
+import { GripVertical, Images, Notebook, Trash } from "lucide-react";
 import { Separator } from "../ui/separator";
+import ImageUploadWrapper from "../image-upload/ImageUploadWrapper";
 
 export type ElementType = "image" | "text";
 export type BlockType = {
@@ -53,7 +54,7 @@ export default function RootPage() {
             </CardDescription>
             <Separator className="my-4" />
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex flex-col gap-4">
             {bloks.length === 0 && (
               <div className="border-2 border-dashed border-gray-300 rounded-md p-6 flex flex-col items-center justify-center gap-4 bg-gray-100/50">
                 Зараз немає блоків, обири блок який ти хочеш додати вище,
@@ -64,7 +65,30 @@ export default function RootPage() {
 
             {bloks.map((it) => (
               <div key={it.id}>
-                {it.type === "image" && <div>Картинка</div>}
+                {it.type === "image" && (
+                  <Card className="bg-gray-100/50">
+                    <CardHeader className="flex justify-between items-center">
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        className="size-8"
+                      >
+                        <GripVertical />
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="icon"
+                        className="size-8"
+                        onClick={() => delteBlokHendler(it.id)}
+                      >
+                        <Trash />
+                      </Button>
+                    </CardHeader>
+                    <CardContent>
+                      <ImageUploadWrapper />
+                    </CardContent>
+                  </Card>
+                )}
                 {it.type === "text" && <div>Текст</div>}
               </div>
             ))}
