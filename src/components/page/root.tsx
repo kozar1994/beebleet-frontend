@@ -9,10 +9,12 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Button } from "../ui/button";
-import { GripVertical, Images, Notebook, Trash } from "lucide-react";
+import { Images, Notebook } from "lucide-react";
 import { Separator } from "../ui/separator";
 import ImageUploadWrapper from "../image-upload/ImageUploadWrapper";
 import TextEditor from "../text-editor";
+import DndProvider from "../dnd/dnd-provider";
+import DndCard from "../dnd/dnd-card";
 
 export type ElementType = "image" | "text";
 export type BlockType = {
@@ -22,6 +24,8 @@ export type BlockType = {
 
 export default function RootPage() {
   const [bloks, setBlocks] = useState<BlockType[]>([]);
+
+  const bloksIds = bloks.map((it) => it.id);
 
   const addNewBlokHendler = (type: ElementType) => {
     setBlocks((oldBlocks) => [...oldBlocks, { id: crypto.randomUUID(), type }]);
@@ -64,58 +68,33 @@ export default function RootPage() {
               </div>
             )}
 
-            {bloks.map((it) => (
-              <div key={it.id}>
-                {it.type === "image" && (
-                  <Card className="bg-gray-100/50">
-                    <CardHeader className="flex justify-between items-center">
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        className="size-8"
-                      >
-                        <GripVertical />
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        size="icon"
-                        className="size-8"
-                        onClick={() => delteBlokHendler(it.id)}
-                      >
-                        <Trash />
-                      </Button>
-                    </CardHeader>
-                    <CardContent>
-                      <ImageUploadWrapper />
-                    </CardContent>
-                  </Card>
-                )}
-                {it.type === "text" && (
-                  <Card className="bg-gray-100/50">
-                    <CardHeader className="flex justify-between items-center">
-                      <Button
-                        variant="secondary"
-                        size="icon"
-                        className="size-8"
-                      >
-                        <GripVertical />
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        size="icon"
-                        className="size-8"
-                        onClick={() => delteBlokHendler(it.id)}
-                      >
-                        <Trash />
-                      </Button>
-                    </CardHeader>
-                    <CardContent>
-                      <TextEditor />
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            ))}
+            <DndProvider
+              items={bloksIds}
+              setBlocks={setBlocks}
+              onDragEnd={(newBlocks) => {
+                console.log("setBlocks()", newBlocks);
+              }}
+            >
+              {bloks.map((it) =>
+                it.type === "image" ? (
+                  <DndCard
+                    key={it.id}
+                    item={it}
+                    delteBlokHendler={delteBlokHendler}
+                  >
+                    <ImageUploadWrapper />
+                  </DndCard>
+                ) : (
+                  <DndCard
+                    key={it.id}
+                    item={it}
+                    delteBlokHendler={delteBlokHendler}
+                  >
+                    <TextEditor />
+                  </DndCard>
+                )
+              )}
+            </DndProvider>
           </CardContent>
         </Card>
       </div>
