@@ -43,7 +43,7 @@ export const UploadZone: React.FC<{ item: ImageItem }> = ({ item }) => {
             Завантажити
             <input
               type="file"
-              accept="image/*"
+              accept=".jpg,.jpeg,.png,.webp,.gif,image/jpeg,image/png,image/webp,image/gif"
               className="hidden"
               onChange={(e) => onFiles(e.target.files)}
             />
