@@ -36,11 +36,11 @@ export const UploadZone: React.FC<{ item: ImageItem }> = ({ item }) => {
     >
       <CardContent className="flex flex-col items-center gap-4">
         <p className="text-sm text-muted-foreground">
-          Перетягніть зображення сюди або завантажте
+          Drag and drop an image here or upload it:
         </p>
         <Button asChild>
           <label>
-            Завантажити
+            Upload image
             <input
               type="file"
               accept=".jpg,.jpeg,.png,.webp,.gif,image/jpeg,image/png,image/webp,image/gif"

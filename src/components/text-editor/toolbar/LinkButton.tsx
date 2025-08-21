@@ -9,6 +9,11 @@ import { Link } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 export default function LinkButton() {
   const { editor } = useCurrentEditor();
@@ -35,21 +40,26 @@ export default function LinkButton() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant={editor.isActive("link") ? "secondary" : "outline"}
-          size="icon"
-          type="button"
-        >
-          <Link className="h-4 w-4" />
-        </Button>
-      </PopoverTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button
+              variant={editor.isActive("link") ? "secondary" : "outline"}
+              size="icon"
+              type="button"
+            >
+              <Link className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent>Link (Ctrl+K)</TooltipContent>
+      </Tooltip>
       <PopoverContent className="w-80 p-4">
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="font-medium leading-none">Додати посилання</h4>
+            <h4 className="font-medium leading-none">Add a link</h4>
             <p className="text-sm text-muted-foreground">
-              Ввесдить URL для посилання
+              Enter the URL for the link:
             </p>
           </div>
           <div className="grid gap-2">
@@ -66,9 +76,9 @@ export default function LinkButton() {
           </div>
           <div className="flex justify-end gap-2">
             <Button variant="outline" onClick={() => setOpen(false)}>
-              Відмінити
+              Cancel
             </Button>
-            <Button onClick={applyLink}>Застосивати</Button>
+            <Button onClick={applyLink}>Apply</Button>
           </div>
         </div>
       </PopoverContent>

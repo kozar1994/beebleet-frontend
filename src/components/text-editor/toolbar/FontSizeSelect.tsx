@@ -7,6 +7,11 @@ import {
 import { useCurrentEditor } from "@tiptap/react";
 import { ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 const FONT_SIZES = [
   { label: "12px", value: "12px" },
@@ -44,13 +49,18 @@ export default function FontSizeSelect() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-1">
-          {FONT_SIZES.find((size) => size.value === currentSize)?.label ||
-            "Розмір шрифту"}
-          <ArrowDown className="h-4 w-4" />
-        </Button>
-      </PopoverTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button variant="outline" size="sm" className="gap-1">
+              {FONT_SIZES.find((size) => size.value === currentSize)?.label ||
+                "Font size"}
+              <ArrowDown className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent>Font size</TooltipContent>
+      </Tooltip>
       <PopoverContent className="w-auto p-1">
         <div className="flex flex-col">
           {FONT_SIZES.map((size) => (

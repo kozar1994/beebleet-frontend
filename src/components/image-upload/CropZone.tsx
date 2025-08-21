@@ -64,7 +64,7 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
                 className="absolute top-3 right-3"
               >
                 <Pencil className="w-4 h-4 mr-0 md:mr-1" />{" "}
-                <span className="hidden md:inline">Редагувати</span>
+                <span className="hidden md:inline">Edit</span>
               </Button>
             )}
           </div>
@@ -88,7 +88,7 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
               className="absolute top-3 right-3"
             >
               <Trash2 className="w-4 h-4 mr-0 md:mr-1" />
-              <span className="hidden md:inline">Видалити</span>
+              <span className="hidden md:inline">Remove</span>
             </Button>
 
             <div className="absolute left-3 bottom-3 right-3 flex items-center justify-between gap-3 bg-background/60 backdrop-blur-sm p-2 rounded-lg shadow">
@@ -110,7 +110,7 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
                   onClick={onSave}
                 >
                   <Save className="w-4 h-4 mr-0 md:mr-1" />
-                  <span className="hidden md:inline">Зберегти</span>
+                  <span className="hidden md:inline">Save</span>
                 </Button>
 
                 <Button
@@ -119,7 +119,7 @@ export const CropZone: React.FC<{ item: ImageItem }> = ({ item }) => {
                   onClick={() => setIsEditMode(false)}
                 >
                   <Save className="w-4 h-4 mr-0 md:mr-1" />
-                  <span className="hidden md:inline">Відмінити</span>
+                  <span className="hidden md:inline">Cancel</span>
                 </Button>
               </div>
             </div>

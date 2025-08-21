@@ -9,6 +9,11 @@ import { Palette } from "lucide-react";
 import { useState } from "react";
 //TODO: react-colorful давно не обнолвлялась треба ошукати заміну
 import { HexColorPicker } from "react-colorful";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 export default function TextColorButton() {
   const { editor } = useCurrentEditor();
@@ -23,17 +28,24 @@ export default function TextColorButton() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant={
-            editor.isActive("textStyle", { color }) ? "secondary" : "outline"
-          }
-          size="icon"
-          type="button"
-        >
-          <Palette className="h-4 w-4" />
-        </Button>
-      </PopoverTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <PopoverTrigger asChild>
+            <Button
+              variant={
+                editor.isActive("textStyle", { color })
+                  ? "secondary"
+                  : "outline"
+              }
+              size="icon"
+              type="button"
+            >
+              <Palette className="h-4 w-4" />
+            </Button>
+          </PopoverTrigger>
+        </TooltipTrigger>
+        <TooltipContent>Text color</TooltipContent>
+      </Tooltip>
       <PopoverContent className="w-auto p-2">
         <HexColorPicker
           color={currentColor}
@@ -49,7 +61,7 @@ export default function TextColorButton() {
             setOpen(false);
           }}
         >
-          Відмінити
+          Cancel
         </Button>
       </PopoverContent>
     </Popover>

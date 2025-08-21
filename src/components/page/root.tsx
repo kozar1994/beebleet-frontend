@@ -51,7 +51,7 @@ export default function RootPage() {
         variant="outline"
         onClick={() => addNewBlokHendler("image")}
       >
-        <Images className="mr-2 w-6 h-6" /> Картинки
+        <Images className="mr-2 w-6 h-6" /> Add a new section for images
         <Badge variant="secondary">
           limit: {countImageBlock}/{LIMIT_BLOCK.IMAGE}
         </Badge>
@@ -62,7 +62,7 @@ export default function RootPage() {
         onClick={() => addNewBlokHendler("text")}
       >
         <Notebook className="mr-2 w-6 h-6" />
-        Текст
+        Add a new text section
         <Badge variant="secondary">
           limit: {countTextBlock}/{LIMIT_BLOCK.TEXT}
         </Badge>
@@ -75,7 +75,7 @@ export default function RootPage() {
       <div className="container mx-auto py-4">
         <Card>
           <CardHeader>
-            <CardTitle>Обери Секцію</CardTitle>
+            <CardTitle>What would you like to add?</CardTitle>
             <CardDescription className="flex gap-2 mt-2">
               {sectionWithButton}
             </CardDescription>
@@ -84,8 +84,8 @@ export default function RootPage() {
           <CardContent className="flex flex-col gap-4">
             {bloks.length === 0 && (
               <div className="border-2 border-dashed border-gray-300 rounded-md p-6 flex flex-col items-center justify-center gap-4 bg-gray-100/50">
-                Зараз немає блоків, обири блок який ти хочеш додати вище,
-                натиснувши на кнопку юлок ти хочеш додати:
+                Add your first block. Choose a block type from the options
+                above.
                 <div className="m-auto flex gap-2"> {sectionWithButton}</div>
               </div>
             )}
