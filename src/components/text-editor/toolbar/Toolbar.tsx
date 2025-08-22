@@ -8,6 +8,7 @@ import FontSizeSelect from "./FontSizeSelect";
 import TextColorButton from "./TextColorButton";
 import AlignmentButtons from "./AlignmentButtons";
 import LinkButton from "./LinkButton";
+import { ListButtons } from "./ListButtons";
 import { useCurrentEditor } from "@tiptap/react";
 
 export const Toolbar: React.FC = () => {
@@ -53,6 +54,8 @@ export const Toolbar: React.FC = () => {
       <Separator orientation="vertical" className="h-6 bg-gray-300 w-px" />
 
       <LinkButton />
+      <Separator orientation="vertical" className="h-6 bg-gray-300 w-px" />
+      <ListButtons />
     </div>
   );
 };
