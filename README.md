@@ -2,6 +2,8 @@
 
 **Demo:** [https://beebleet-frontend.vercel.app/](https://beebleet-frontend.vercel.app/)
 
+This is a demo for both mobile and desktop. All functionality should work on both, as libraries with mobile support were used.
+
 ---
 
 ## Overview
