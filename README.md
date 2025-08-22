@@ -10,12 +10,6 @@ This repository contains the frontend part of the test assignment. It provides a
 
 ---
 
-## Demo
-
-Live demo: [https://beebleet-frontend.vercel.app/](https://beebleet-frontend.vercel.app/)
-
----
-
 ## Installation
 
 Install dependencies (example using pnpm):
