@@ -10,6 +10,8 @@ import {
   useImageUpload,
 } from "./context/ImageUploadContext";
 
+import { DragDropProvider } from "@dnd-kit/react";
+
 function ImageUploadConteiner() {
   const { images, addEmptyCard } = useImageUpload();
 
@@ -24,8 +26,8 @@ function ImageUploadConteiner() {
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-        {images.map((it) => (
-          <ImageCard key={it.id} item={it} />
+        {images.map((it, index) => (
+          <ImageCard key={it.id} item={it} index={index} />
         ))}
       </div>
 
@@ -44,8 +46,10 @@ function ImageUploadConteiner() {
 
 export default function ImageUploadWrapper() {
   return (
-    <ImageUploadProvider>
-      <ImageUploadConteiner />
-    </ImageUploadProvider>
+    <DragDropProvider>
+      <ImageUploadProvider>
+        <ImageUploadConteiner />
+      </ImageUploadProvider>
+    </DragDropProvider>
   );
 }

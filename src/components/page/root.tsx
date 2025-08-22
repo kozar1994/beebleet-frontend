@@ -45,13 +45,13 @@ export default function RootPage() {
   };
 
   const sectionWithButton = (
-    <>
+    <div className="flex gap-2 flex-wrap">
       <Button
         disabled={countImageBlock >= LIMIT_BLOCK.IMAGE}
         variant="outline"
         onClick={() => addNewBlokHendler("image")}
       >
-        <Images className="mr-2 w-6 h-6" /> Add a new section for images
+        <Images className="mr-2 w-6 h-6" /> Add section for images
         <Badge variant="secondary">
           limit: {countImageBlock}/{LIMIT_BLOCK.IMAGE}
         </Badge>
@@ -62,12 +62,12 @@ export default function RootPage() {
         onClick={() => addNewBlokHendler("text")}
       >
         <Notebook className="mr-2 w-6 h-6" />
-        Add a new text section
+        Add text section
         <Badge variant="secondary">
           limit: {countTextBlock}/{LIMIT_BLOCK.TEXT}
         </Badge>
       </Button>
-    </>
+    </div>
   );
 
   return (
