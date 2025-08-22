@@ -29,7 +29,7 @@ export const ImageUploadProvider: React.FC<{ children: React.ReactNode }> = ({
   const [images, setImages] = useState<ImageItem[]>([defaultImage]);
 
   const addEmptyCard = () => {
-    setImages((s) => [...s, defaultImage]);
+    setImages((s) => [...s, { ...defaultImage, id: crypto.randomUUID() }]);
   };
 
   const addImageToCard = (id: string, dataUrl: string) => {
